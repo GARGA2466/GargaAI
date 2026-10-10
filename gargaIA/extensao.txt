@@ -1,0 +1,2 @@
+
+abre netflix, netflix = focar_ou_abrir('Netflix', 'https://www.netflix.com')

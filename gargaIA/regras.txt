@@ -1,0 +1,51 @@
+# 1. FECHAR ABAS E JANELAS
+fechar aba, fecha aba, fecha essa aba, fechar esta aba, feche esta aba, feche essa aba = import pygetwindow as gw; janelas = gw.getWindowsWithTitle('Opera'); janelas[0].activate() if janelas else None; pyautogui.hotkey('ctrl', 'w')
+fechar programa, fecha a janela, fechar jogo, fechar janela, fecha isso, encerra essa janela, feche isso, feche a janela = pyautogui.hotkey('alt', 'f4')
+
+# 2. CONTROLE DE PÁGINAS DO OPERA
+desce a pagina, rola pra baixo, desce mais um pouco, abaixa mais um pouco ai, rolar pagina = import pygetwindow as gw; janelas = gw.getWindowsWithTitle('Opera'); janelas[0].activate() if janelas else None; pyautogui.press('pagedown')
+sobe a pagina, rola pra cima, sobe um pouco = import pygetwindow as gw; janelas = gw.getWindowsWithTitle('Opera'); janelas[0].activate() if janelas else None; pyautogui.press('pageup')
+atualiza a pagina, atualiza o video, atualiza ai = import pygetwindow as gw; janelas = gw.getWindowsWithTitle('Opera'); janelas[0].activate() if janelas else None; pyautogui.press('f5')
+
+# 3. NAVEGAÇÃO ENTRE ABAS
+proxima aba, passa a aba, trocar aba, muda de aba = import pygetwindow as gw; janelas = gw.getWindowsWithTitle('Opera'); janelas[0].activate() if janelas else None; pyautogui.hotkey('ctrl', 'tab')
+aba anterior, volta a aba, volta aba = import pygetwindow as gw; janelas = gw.getWindowsWithTitle('Opera'); janelas[0].activate() if janelas else None; pyautogui.hotkey('ctrl', 'shift', 'tab')
+nova aba, abre aba, cria uma aba nova = import pygetwindow as gw; janelas = gw.getWindowsWithTitle('Opera'); janelas[0].activate() if janelas else None; pyautogui.hotkey('ctrl', 't')
+
+primeira aba, aba 1, abrir primeira aba, ir pra primeira aba = import pygetwindow as gw; janelas = gw.getWindowsWithTitle('Opera'); janelas[0].activate() if janelas else None; pyautogui.hotkey('ctrl', '1')
+segunda aba, aba 2, abrir segunda aba, ir pra segunda aba, abba 2 = import pygetwindow as gw; janelas = gw.getWindowsWithTitle('Opera'); janelas[0].activate() if janelas else None; pyautogui.hotkey('ctrl', '2')
+terceira aba, aba 3, abrir terceira aba, ir pra terceira aba = import pygetwindow as gw; janelas = gw.getWindowsWithTitle('Opera'); janelas[0].activate() if janelas else None; pyautogui.hotkey('ctrl', '3')
+quarta aba, aba 4, abrir quarta aba = import pygetwindow as gw; janelas = gw.getWindowsWithTitle('Opera'); janelas[0].activate() if janelas else None; pyautogui.hotkey('ctrl', '4')
+quinta aba, aba 5, abrir quinta aba = import pygetwindow as gw; janelas = gw.getWindowsWithTitle('Opera'); janelas[0].activate() if janelas else None; pyautogui.hotkey('ctrl', '5')
+
+# 4. CONTROLE DE MÍDIA
+despause, despausa, despausar, dispause, play, tocar, roda, continua, solta o som = pyautogui.press('playpause')
+pause, pausar, pausa, pare o video, parar musica, para o som, segura o video = pyautogui.press('playpause')
+
+# 5. MINIMIZAR / MAXIMIZAR
+minimizar navegador, minimiza navegador, esconde opera = import pygetwindow as gw; [w.minimize() for w in gw.getWindowsWithTitle('Opera')]
+maximizar navegador, maximiza navegador, tela cheia navegador = import pygetwindow as gw; [w.maximize() for w in gw.getWindowsWithTitle('Opera')]
+minimizar discord, minimiza discord = import pygetwindow as gw; [w.minimize() for w in gw.getWindowsWithTitle('Discord')]
+mostrar área de trabalho, mostrar area de trabalho, area de trabalho, limpa tela, minimizar tudo = pyautogui.hotkey('win', 'd')
+minimizar janela, minimiza janela, minimizar tela, minimizar = pyautogui.hotkey('win', 'down')
+maximizar janela, maximiza janela, maximizar tela, maximizar = pyautogui.hotkey('win', 'up')
+tirar print, printa a tela, print = pyautogui.press('printscreen')
+
+# 6. SITES E APPS (usando a função inteligente)
+abrir opera, opera gx, abre opera, abrir navegador = focar_ou_abrir('Opera', 'start opera')
+abrir youtube, abre youtube, youtube, yutube = focar_ou_abrir('YouTube', 'https://www.youtube.com')
+abrir tik tok, abrir tiktok, tiktok, ttk = focar_ou_abrir('TikTok', 'https://www.tiktok.com')
+abrir discord, discord, zap = focar_ou_abrir('Discord', 'start discord:')
+abrir steam, steam = focar_ou_abrir('Steam', 'steam://')
+
+# 7. VOLUME
+coloca o volume em 10, volume em 10, volume 10 = [pyautogui.press('volumedown') for _ in range(50)]; [pyautogui.press('volumeup') for _ in range(5)]
+coloca o volume em 20, volume em 20, volume 20 = [pyautogui.press('volumedown') for _ in range(50)]; [pyautogui.press('volumeup') for _ in range(10)]
+coloca o volume em 30, volume em 30, volume 30 = [pyautogui.press('volumedown') for _ in range(50)]; [pyautogui.press('volumeup') for _ in range(15)]
+coloca o volume em 50, volume em 50, volume 50, metade do volume = [pyautogui.press('volumedown') for _ in range(50)]; [pyautogui.press('volumeup') for _ in range(25)]
+coloca o volume em 70, volume em 70, volume 70 = [pyautogui.press('volumedown') for _ in range(50)]; [pyautogui.press('volumeup') for _ in range(35)]
+volume em 100, volume no maximo = [pyautogui.press('volumeup') for _ in range(50)]
+aumentar volume, sobe o som, mais alto, aumenta volume = pyautogui.press('volumeup')
+diminuir volume, abaixa o som, mais baixo, diminui volume = pyautogui.press('volumedown')
+mutar som, mudo, silenciar pc = pyautogui.press('volumemute')
+muta, desmuta, mutar discord = pyautogui.hotkey('ctrl', 'shift', 'm')
