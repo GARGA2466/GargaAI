@@ -65,6 +65,43 @@ caminho_extensao = os.path.join(pasta, "extensao.txt")
 cancelar_tarefa = False
 memoria = deque(maxlen=6)
 
+def focar_ou_abrir(titulo_procurado, url_ou_comando):
+    try:
+        todas = gw.getAllWindows()
+        janela_encontrada = None
+
+        for janela in todas:
+            titulo = janela.title.lower()
+            if titulo_procurado.lower() in titulo:
+                janela_encontrada = janela
+                break
+
+        if janela_encontrada:
+            if janela_encontrada.isMinimized:
+                janela_encontrada.restore()
+            janela_encontrada.activate()
+            print(f"[GargaAI]: Foquei em → {janela_encontrada.title}")
+            return True
+
+        operas = [w for w in gw.getAllWindows() if "opera" in w.title.lower()]
+        if operas:
+            operas[0].activate()
+            time.sleep(0.3)
+
+        print(f"[GargaAI]: Abrindo novo '{titulo_procurado}'...")
+        if url_ou_comando.startswith("http"):
+            subprocess.Popen(['start', url_ou_comando], shell=True)
+        else:
+            os.system(url_ou_comando)
+        return False
+
+    except Exception:
+        if url_ou_comando.startswith("http"):
+            subprocess.Popen(['start', url_ou_comando], shell=True)
+        else:
+            os.system(url_ou_comando)
+        return False
+
 def processar_ia_completa(pedido, comando, eh_comando):
     global cancelar_tarefa
     cancelar_tarefa = False
@@ -73,6 +110,7 @@ def processar_ia_completa(pedido, comando, eh_comando):
         palavra_chave = comando.replace("abre", "").replace("abrir", "").strip()
         prompt = f"""
         Gere APENAS uma linha no formato: gatilho = codigo_python para Windows.
+        Use focar_ou_abrir('Nome', 'url_ou_comando') se for app ou site.
         Pedido: '{pedido}'
         Responda apenas a linha pura sem markdown.
         """
@@ -120,14 +158,13 @@ falar(MSG_PRONTO)
 while True:
     try:
         with sr.Microphone() as source:
-            reconhecedor.adjust_for_ambient_noise(source, duration=0.5)
-            audio = reconhecedor.listen(source)
+            print("\n🎙️ [Microfone Aberto]: Pode falar!")
+            audio = reconhecedor.listen(source, phrase_time_limit=8)
 
         pedido = reconhecedor.recognize_google(audio, language=IDIOMA)
         comando = pedido.lower().strip()
-        print(f"\n{MSG_OUVINDO} '{pedido}'")
+        print(f"{MSG_OUVINDO} '{pedido}'")
 
-        # LISTA DE EMERGÊNCIA COMPLETA (PT e EN):
         palavras_cancelar = ["cancela", "cancelar", "para tudo", "esquece", "cancel", "stop", "abort", "calma", "calma aí", "calma ai", "espera", "para", "para aí"]
         if any(p in comando for p in palavras_cancelar):
             cancelar_tarefa = True
@@ -138,7 +175,6 @@ while True:
             falar("Goodbye!" if IDIOMA == "en-US" else "Até logo, chefe!")
             break
 
-        # Regras diretas (Instantâneas)
         executou = False
         for caminho in [caminho_regras, caminho_extensao]:
             if os.path.exists(caminho):
@@ -159,7 +195,6 @@ while True:
         if executou:
             continue
 
-        # Processamento inteligente em SEGUNDO PLANO (Nunca congela o microfone!)
         palavras_comando = ["abre", "abrir", "fecha", "fechar", "open", "close", "start", "pausa", "pausar", "play", "volume", "muta", "minimiza", "maximiza"]
         eh_comando = any(p in comando for p in palavras_comando)
 
