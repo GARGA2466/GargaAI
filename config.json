@@ -1,0 +1,81 @@
+{
+  "_ajuda": "Edite so o que vem depois dos dois pontos. Texto fica entre aspas, numeros ficam sem aspas, e toda linha termina com virgula, menos a ultima de cada bloco. Se errar, o programa avisa e usa os valores padrao.",
+  "_ajuda_escuta": "palavra_ativacao = nome pra chamar a IA (vazio = ela pergunta na primeira vez). variacoes_palavra = jeitos que o Google pode entender o nome errado: olhe o 'Voce disse' no terminal e acrescente aqui. modo_escuta = palavra_ativacao ou sempre. tecla_escuta = tecla liga/desliga do modo nao perturbe (vazio desativa). tecla_formatar = aperte 2 vezes pra apagar o nome e as configuracoes (vazio desativa). janela_escuta = segundos pra falar o pedido depois de dizer so o nome. interface = janela ou terminal. modo_padrao = conversa ou trabalho (troque por voz: 'modo trabalho' / 'modo conversa'). lembrar_modo = true salva o modo escolhido por voz. trabalho_silencioso = true faz o modo trabalho nao falar nada. diario_max_itens = limite de anotacoes da memoria de longo prazo (memoria.json). navegador_padrao = auto, brave, chrome, edge ou opera (auto usa o que estiver aberto, ou o padrao do Windows). navegador_porta_debug = porta de depuracao do navegador (so o clique em videos usa).",
+  "modelo": "qwen2.5:7b",
+  "idioma": "auto",
+  "palavra_ativacao": "",
+  "variacoes_palavra": [],
+  "modo_escuta": "palavra_ativacao",
+  "interface": "janela",
+  "modo_padrao": "conversa",
+  "lembrar_modo": true,
+  "trabalho_silencioso": false,
+  "tecla_escuta": "f8",
+  "tecla_formatar": "ctrl+f12",
+  "janela_escuta": 10,
+  "tempo_max_frase": 8,
+  "max_passos_ia": 4,
+  "limite_palavras_regra": 8,
+  "memoria_mensagens": 8,
+  "diario_max_itens": 30,
+  "manter_modelo": "30m",
+  "navegador_padrao": "auto",
+  "navegador_porta_debug": 9222,
+  "apps_e_sites": {
+    "youtube": [
+      "youtube",
+      "https://www.youtube.com"
+    ],
+    "netflix": [
+      "netflix",
+      "https://www.netflix.com"
+    ],
+    "tiktok": [
+      "tiktok",
+      "https://www.tiktok.com"
+    ],
+    "google": [
+      "google",
+      "https://www.google.com"
+    ],
+    "discord": [
+      "discord",
+      "start discord:"
+    ],
+    "opera": [
+      "opera",
+      "start opera"
+    ],
+    "calculadora": [
+      "calculadora",
+      "calc"
+    ],
+    "bloco de notas": [
+      "bloco de notas",
+      "notepad"
+    ]
+  },
+  "palavras_cancelar": [
+    "cancela",
+    "cancelar",
+    "cancel",
+    "stop",
+    "abort",
+    "abortar",
+    "calma",
+    "espera"
+  ],
+  "frases_cancelar": [
+    "para",
+    "pare",
+    "para ai",
+    "para tudo",
+    "pare tudo"
+  ],
+  "frases_sair": [
+    "encerrar programa",
+    "sair",
+    "exit",
+    "quit"
+  ]
+}
